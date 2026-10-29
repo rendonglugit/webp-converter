@@ -24,7 +24,8 @@ This is that dialog, rebuilt for the browser. Drop files in, pick a quality, dow
 | **Output** | Individual `.webp` files, or a single ZIP |
 | **Lossy** | Quality 0–100, defaults to 75 |
 | **Lossless** | True lossless (libwebp VP8L) — pixel-identical output |
-| **Review mode** | Compare original vs. WebP with a drag slider, decide per image |
+| **Compare** | Split slider, side-by-side, or a pixel-difference map — zoom to 100/200/400% to inspect artifacts |
+| **Review mode** | Optional per-image confirmation: keep the original or accept the WebP |
 | **Skip rules** | Keep original if WebP ends up larger; skip nine-patch `.9.png`; skip images with alpha |
 | **Structure** | ZIP paths are preserved — unzip and drop it straight into your project |
 | **Non-images** | `.xml` / `.json` / `.txt` etc. are passed through untouched |
@@ -34,10 +35,22 @@ This is that dialog, rebuilt for the browser. Drop files in, pick a quality, dow
 
 1. Drag a folder or ZIP onto the page (or click **Choose folder**)
 2. Set quality on the left — 75 is a good default
-3. Check the size deltas; enable **Review each image before saving** if you want to eyeball them
+3. Check the size deltas; click **Compare** (or any row) to inspect before/after
 4. Click **Download ZIP**
 
 Inside the ZIP, `assets/icons/a.png` becomes `assets/icons/a.webp`. Everything else keeps its original path.
+
+### Inspecting a conversion
+
+The compare view has three modes and four zoom levels:
+
+- **Split** — drag the divider to wipe between original and WebP
+- **Side by side** — both images at once, for judging overall fidelity
+- **Difference map** — per-pixel delta as a heatmap, plus average error, peak error and the share of pixels that changed
+
+Zooming to 200% or 400% is the practical way to spot blockiness in gradients and ringing around text. When the image is larger than the viewport, drag to pan.
+
+Keyboard: `←` `→` to step through images, `0` to reset zoom, `Esc` to close.
 
 ## Offline use
 
